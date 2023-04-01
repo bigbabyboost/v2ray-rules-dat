@@ -6,6 +6,9 @@ on:
       - master
     paths-ignore:
       - "**/README.md"
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   build:
