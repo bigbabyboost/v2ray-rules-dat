@@ -63,7 +63,6 @@ jobs:
           echo "MALICIOUS_HOST=https://raw.githubusercontent.com/elliotwutingfeng/Inversion-DNSBL-Blocklists/main/Google_hostnames_light.txt" >> $GITHUB_ENV
           echo "HAGEZI_NORMAL=https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/multi.txt" >> $GITHUB_ENV
           echo "HBLOCK=https://hblock.molinero.dev/hosts" >> $GITHUB_ENV
-          echo "NOTRACK=https://gitlab.com/quidsup/notrack-blocklists/-/blob/master/notrack-blocklist.txt" >> $GITHUB_ENV
           echo "GOODBYEADS=https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt" >> $GITHUB_ENV
           echo "HOST_LITE=https://o0.pages.dev/Lite/hosts.txt" >> $GITHUB_ENV
         shell: bash
@@ -207,12 +206,10 @@ jobs:
           curl -sSL $OISD_NSFW | perl -ne '/^server=\/([^\/]+)\// && print "$1\n"' > oisd-nsfw.txt
           curl -sSL $HOST_LITE | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> ./community/data/1host-lite
           curl -sSL $HOST_LITE | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> 1host-lite.txt
-          curl -sSL $HAGEZI_NORMAL | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' > ./community/data/nextdns
-          curl -sSL $HAGEZI_NORMAL | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' > nextdns.txt
+          curl -sSL $HAGEZI_NORMAL | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> ./community/data/nextdns
+          curl -sSL $HAGEZI_NORMAL | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> nextdns.txt
           curl -sSL $HBLOCK | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> ./community/data/nextdns
           curl -sSL $HBLOCK | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> nextdns.txt
-          curl -sSL $NOTRACK | awk -F'#' '{print $1}' >> ./community/data/nextdns
-          curl -sSL $NOTRACK | awk -F'#' '{print $1}' >> nextdns.txt
           curl -sSL $GOODBYEADS | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> ./community/data/nextdns
           curl -sSL $GOODBYEADS | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> nextdns.txt
           wget -O ./community/data/rule-doh $DOH_DNS
