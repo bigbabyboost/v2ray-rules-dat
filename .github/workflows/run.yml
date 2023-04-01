@@ -207,8 +207,8 @@ jobs:
           curl -sSL $OISD_NSFW | perl -ne '/^server=\/([^\/]+)\// && print "$1\n"' > oisd-nsfw.txt
           curl -sSL $HOST_LITE | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> ./community/data/1host-lite
           curl -sSL $HOST_LITE | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> 1host-lite.txt
-          curl -sSL $HAGEZI_NORMAL | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> ./community/data/nextdns
-          curl -sSL $HAGEZI_NORMAL | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> nextdns.txt
+          curl -sSL $HAGEZI_NORMAL | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' > ./community/data/nextdns
+          curl -sSL $HAGEZI_NORMAL | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' > nextdns.txt
           curl -sSL $HBLOCK | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> ./community/data/nextdns
           curl -sSL $HBLOCK | perl -ne '/^0\.0\.0\.0\s([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})/ && print "$1\n"' | sed '1d' >> nextdns.txt
           curl -sSL $NOTRACK | awk -F'#' '{print $1}' >> ./community/data/nextdns
