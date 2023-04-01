@@ -5,6 +5,8 @@ Generate custom geosite and geoip based on [Loyalsoldier](https://github.com/Loy
 ## GEOSITE.DAT
 
 - Same as Original but with addtional list:
+  - `geosite:nextdns`
+  - `geosite:1host-lite`
   - `geosite:oisd-full`
   - `geosite:oisd-small`
   - `geosite:oisd-nsfw`
